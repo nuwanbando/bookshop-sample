@@ -1,0 +1,15 @@
+FROM isuper/java-oracle
+
+RUN apt-get update && apt-get install -y \
+        unzip \
+        wget && \
+        cd / && \
+        mkdir wso2 && \
+        cd wso2/ && \
+        wget -U 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.6) Gecko/20070802 SeaMonkey/1.1.4' http://product-dist.wso2.com/products/enterprise-service-bus/4.9.0/wso2esb-4.9.0.zip && \
+        unzip wso2esb-4.9.0.zip
+
+CMD ["sh", "/wso2/wso2esb-4.9.0/bin/wso2server.sh"]
+
+EXPOSE 9763
+EXPOSE 9443
