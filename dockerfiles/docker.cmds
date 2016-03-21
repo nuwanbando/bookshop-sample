@@ -1,0 +1,5 @@
+docker build -t wso2esb - < dockerfiles/wso2esb.dfile
+docker run --net=bookshop -dit --name esb.bookshop.com -p 9773:9773 -p 9453:9453 -p 8290:8290 -p 8253:8253 wso2esb
+
+docker build -t wso2dss - < dockerfiles/wso2dss.dfile
+docker run --net=bookshop -dit --name dss.bookshop.com -p 9763:9763 -p 9443:9443 wso2dss-mysql
