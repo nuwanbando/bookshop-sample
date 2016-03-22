@@ -1,4 +1,5 @@
-# bookshop-sample
+### Bulk ordering work-flow for book publishers
+
 the book ordering work-flow / integration scenario with a docker based deployment
 
 The project setups a orchestration scenario with WSO2 ESB / BPS & DSS. 
