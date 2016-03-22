@@ -22,13 +22,21 @@
 DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orders` (
+CREATE TABLE `bookshop`.`orders` (
   `orderId` varchar(45) NOT NULL,
   `bookId` varchar(45) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `reviewed` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`orderId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `customer`;
+
+CREATE TABLE `bookshop`.`customer` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `name` VARCHAR(45) NULL COMMENT '',
+  `email` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
