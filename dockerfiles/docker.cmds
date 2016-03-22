@@ -3,3 +3,6 @@ docker run --net=bookshop -dit --name esb.bookshop.com -p 9773:9773 -p 9453:9453
 
 docker build -t wso2dss - < dockerfiles/wso2dss.dfile
 docker run --net=bookshop -dit --name dss.bookshop.com -p 9763:9763 -p 9443:9443 wso2dss-mysql
+
+
+ocker run --net=bookshop --name bookshop -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=bookshop -d -p 3306:3306 bookshop-db
