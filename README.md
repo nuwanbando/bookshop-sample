@@ -25,7 +25,7 @@ mysql - port 3306
 
 ### Steps to execute the sample
 
-### Step-1
+##### Step-1
 ```
 # send the following request {replace the host with docker vm ip/host}
 
@@ -38,7 +38,7 @@ Content-Type: application/x-www-form-urlencoded
 customerName=nuwan&customerEmail=nuwan%40wso2.com&bookId=B20&quantity=10
 ```
 
-### Step-2
+##### Step-2
 ```
 # navigate to bpmn-explorer
 
@@ -49,7 +49,7 @@ https://{docker-vm}:9463/bpmn-explorer/myTasks
 approve/reject the task
 ```
 
-### Step-3
+##### Step-3
 ```
 # Validate the data in mysql db
 
