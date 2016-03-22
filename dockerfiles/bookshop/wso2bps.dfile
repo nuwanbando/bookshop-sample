@@ -1,0 +1,20 @@
+FROM isuper/java-oracle
+
+RUN apt-get update && apt-get install -y \
+        unzip \
+        wget && \
+        cd / && \
+        mkdir wso2 && \
+        cd wso2/ && \
+        wget -U 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.6) Gecko/20070802 SeaMonkey/1.1.4' http://product-dist.wso2.com/products/business-process-server/3.5.1/wso2bps-3.5.1.zip && \
+        unzip wso2bps-3.5.1.zip && \
+        wget https://raw.githubusercontent.com/nuwanbando/bookshop-sample/master/configs/carbon_bps.xml && \
+        wget https://github.com/nuwanbando/bookshop-sample/raw/master/artifacts/BookOrderApprovalProcess.bar && \
+        cp carbon_bps.xml wso2bps-3.5.1/repository/conf/carbon.xml && \
+        mkdir wso2bps-3.5.1/repository/deployment/server/bpmn/ && \
+        cp BookOrderApprovalProcess.bar wso2bps-3.5.1/repository/deployment/server/bpmn/
+
+CMD ["sh", "/wso2/wso2bps-3.5.1/bin/wso2server.sh"]
+
+EXPOSE 9783
+EXPOSE 9463

@@ -1,0 +1,40 @@
+version: '2'
+services:
+  bookshopdb:
+    container_name: bookshopdb
+    build: 
+        context: .
+        dockerfile: bookshopdb.dfile
+    ports:
+     - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: bookshop
+  wos2dss:
+    container_name: dss.bookshop.com
+    build:
+      context: .
+      dockerfile: wso2dss.dfile
+    ports:
+      - "9763:9763"
+      - "9443:9443"
+    depends_on:
+      - bookshopdb
+  wos2esb:
+    container_name: esb.bookshop.com
+    build:
+      context: .
+      dockerfile: wso2esb.dfile
+    ports:
+      - "9773:9773"
+      - "9453:9453"
+      - "8290:8290"
+      - "8253:8253"
+  wos2bps:
+    container_name: bps.bookshop.com
+    build:
+      context: .
+      dockerfile: wso2bps.dfile
+    ports:
+      - "9783:9783"
+      - "9463:9463"

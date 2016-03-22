@@ -1,0 +1,11 @@
+docker build -t bookshopdb - < dockerfiles/bookshopdb.dfile
+docker run --net=bookshop --name bookshopdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=bookshop -d -p 3306:3306 bookshop-db
+
+docker build -t wso2esb - < dockerfiles/wso2esb.dfile
+docker run --net=bookshop -dit --name esb.bookshop.com -p 9773:9773 -p 9453:9453 -p 8290:8290 -p 8253:8253 wso2esb
+
+docker build -t wso2dss - < dockerfiles/wso2dss.dfile
+docker run --net=bookshop -dit --name dss.bookshop.com -p 9763:9763 -p 9443:9443 wso2dss
+
+docker build -t wso2bps - < dockerfiles/wso2bps.dfile
+docker run --net=bookshop -dit --name bps.bookshop.com -p 9783:9783 -p 9463:9463 wso2bps
