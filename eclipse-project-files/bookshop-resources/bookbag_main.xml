@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="bookbag_main" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+  <log level="full"/>
+  <script language="js"><![CDATA[var rand = (new Date%9e6).toString(36);
+mc.setProperty("orderId", rand);]]></script>
+  <log>
+    <property expression="get-property('orderId')" name="rand" xmlns:ns="http://org.apache.synapse/xsd"/>
+  </log>
+  <payloadFactory media-type="xml">
+    <format>
+      <xformValues xmlns="">
+        <orderId>$5</orderId>
+        <bookId>$1</bookId>
+        <customerEmail>$2</customerEmail>
+        <quantity>$3</quantity>
+        <customerName>$4</customerName>
+      </xformValues>
+    </format>
+    <args>
+      <arg evaluator="xml" expression="//xformValues/bookId" xmlns:ns="http://org.apache.synapse/xsd"/>
+      <arg evaluator="xml" expression="//xformValues/customerEmail" xmlns:ns="http://org.apache.synapse/xsd"/>
+      <arg evaluator="xml" expression="//xformValues/quantity" xmlns:ns="http://org.apache.synapse/xsd"/>
+      <arg evaluator="xml" expression="//xformValues/customerName" xmlns:ns="http://org.apache.synapse/xsd"/>
+      <arg evaluator="xml" expression="get-property('orderId')" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </args>
+  </payloadFactory>
+  <log level="full"/>
+  <store description="initialRequestStore" messageStore="InitialRequest"/>
+  <payloadFactory media-type="json">
+    <format>{"message":"new order submited"}</format>
+    <args/>
+  </payloadFactory>
+  <respond/>
+</sequence>

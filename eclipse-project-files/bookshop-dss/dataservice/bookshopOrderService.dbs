@@ -1,0 +1,97 @@
+<data name="bookshopOrderService" serviceGroup="org.sample.bookshop" serviceNamespace="">
+    <description/>
+    <config id="bookshop-mysql">
+        <property name="org.wso2.ws.dataservice.user">root</property>
+        <property name="org.wso2.ws.dataservice.password">root</property>
+        <property name="org.wso2.ws.dataservice.protocol">jdbc:mysql://bookshopdb:3306/bookshop</property>
+        <property name="org.wso2.ws.dataservice.driver">com.mysql.jdbc.Driver</property>
+    </config>
+    <query id="select_all_orders_query" useConfig="bookshop-mysql">
+        <sql>SELECT orderId, bookId, quantity, reviewed FROM orders</sql>
+        <result element="ordersCollection" rowName="orders">
+            <element column="orderId" name="orderId" xsdType="xs:string"/>
+            <element column="bookId" name="bookId" xsdType="xs:string"/>
+            <element column="quantity" name="quantity" xsdType="xs:integer"/>
+            <element column="reviewed" name="reviewed" xsdType="xs:string"/>
+        </result>
+    </query>
+    <query id="delete_orders_query" useConfig="bookshop-mysql">
+        <sql>DELETE FROM orders WHERE orderId=?</sql>
+        <param name="orderId" ordinal="1" sqlType="STRING"/>
+    </query>
+    <query id="update_orders_query" useConfig="bookshop-mysql">
+        <sql>UPDATE orders SET bookId=?,quantity=?,reviewed=? WHERE orderId=?</sql>
+        <param name="bookId" ordinal="1" sqlType="STRING"/>
+        <param name="quantity" ordinal="2" sqlType="INTEGER"/>
+        <param name="reviewed" ordinal="3" sqlType="STRING"/>
+        <param name="orderId" ordinal="4" sqlType="STRING"/>
+    </query>
+    <query id="insert_orders_query" useConfig="bookshop-mysql">
+        <sql>INSERT INTO orders(orderId,bookId,quantity,reviewed) VALUES(?,?,?,?)</sql>
+        <param name="orderId" ordinal="1" sqlType="STRING"/>
+        <param name="bookId" ordinal="2" sqlType="STRING"/>
+        <param name="quantity" ordinal="3" sqlType="INTEGER"/>
+        <param name="reviewed" ordinal="4" sqlType="STRING"/>
+    </query>
+    <query id="select_with_key_orders_query" useConfig="bookshop-mysql">
+        <sql>SELECT orderId, bookId, quantity, reviewed FROM orders WHERE orderId=?</sql>
+        <result element="ordersCollection" rowName="orders">
+            <element column="orderId" name="orderId" xsdType="xs:string"/>
+            <element column="bookId" name="bookId" xsdType="xs:string"/>
+            <element column="quantity" name="quantity" xsdType="xs:integer"/>
+            <element column="reviewed" name="reviewed" xsdType="xs:string"/>
+        </result>
+        <param name="orderId" ordinal="1" sqlType="STRING"/>
+    </query>
+    <query id="update_orders_query_part" useConfig="bookshop-mysql">
+        <sql>UPDATE orders SET reviewed=? WHERE orderId=?</sql>
+        <param name="reviewed" sqlType="STRING"/>
+        <param name="orderId" sqlType="STRING"/>
+    </query>
+    <operation name="delete_orders_operation">
+        <call-query href="delete_orders_query">
+            <with-param name="orderId" query-param="orderId"/>
+        </call-query>
+    </operation>
+    <operation name="update_orders_operation">
+        <call-query href="update_orders_query">
+            <with-param name="reviewed" query-param="reviewed"/>
+            <with-param name="bookId" query-param="bookId"/>
+            <with-param name="quantity" query-param="quantity"/>
+            <with-param name="orderId" query-param="orderId"/>
+        </call-query>
+    </operation>
+    <operation name="select_all_orders_operation">
+        <call-query href="select_all_orders_query"/>
+    </operation>
+    <operation name="insert_orders_operation">
+        <call-query href="insert_orders_query">
+            <with-param name="reviewed" query-param="reviewed"/>
+            <with-param name="bookId" query-param="bookId"/>
+            <with-param name="quantity" query-param="quantity"/>
+            <with-param name="orderId" query-param="orderId"/>
+        </call-query>
+    </operation>
+    <operation name="select_with_key_orders_operation">
+        <call-query href="select_with_key_orders_query">
+            <with-param name="orderId" query-param="orderId"/>
+        </call-query>
+    </operation>
+    <resource method="POST" path="orders/{orderId}">
+        <call-query href="update_orders_query_part">
+            <with-param name="reviewed" query-param="reviewed"/>
+            <with-param name="orderId" query-param="orderId"/>
+        </call-query>
+    </resource>
+    <resource method="POST" path="orders">
+        <call-query href="insert_orders_query">
+            <with-param name="orderId" query-param="orderId"/>
+            <with-param name="bookId" query-param="bookId"/>
+            <with-param name="quantity" query-param="quantity"/>
+            <with-param name="reviewed" query-param="reviewed"/>
+        </call-query>
+    </resource>
+    <resource method="GET" path="orders">
+        <call-query href="select_all_orders_query"/>
+    </resource>
+</data>

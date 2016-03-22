@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="procEP" xmlns="http://ws.apache.org/ns/synapse">
+  <http method="post" trace="disable" uri-template="https://bps.bookshop.com:9463/bpmn/runtime/process-instances"/>
+  <property name="Authorization" scope="transport" value="Basic YWRtaW46YWRtaW4="/>
+</endpoint>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="bookbag_main" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>bookbag_main.xml</file>
+            <path>/_system/config/sequences</path>
+            <mediaType>application/vnd.wso2.sequence</mediaType>
+        </item>
+    </artifact>
+    <artifact name="cloneSeq" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>cloneSeq.xml</file>
+            <path>/_system/config/sequences</path>
+            <mediaType>application/vnd.wso2.sequence</mediaType>
+        </item>
+    </artifact>
+    <artifact name="customer_contact_seq" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>customer_contact_seq.xml</file>
+            <path>/_system/config/sequences</path>
+            <mediaType>application/vnd.wso2.sequence</mediaType>
+        </item>
+    </artifact>
+    <artifact name="dss_error" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>dss_error.xml</file>
+            <path>/_system/config/sequences</path>
+            <mediaType>application/vnd.wso2.sequence</mediaType>
+        </item>
+    </artifact>
+    <artifact name="order_send" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>order_send.xml</file>
+            <path>/_system/config/sequences</path>
+            <mediaType>application/vnd.wso2.sequence</mediaType>
+        </item>
+    </artifact>
+    <artifact name="order_seq" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>order_seq.xml</file>
+            <path>/_system/config/sequences</path>
+            <mediaType>application/vnd.wso2.sequence</mediaType>
+        </item>
+    </artifact>
+    <artifact name="triggerProc" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>triggerProc.xml</file>
+            <path>/_system/config/sequences</path>
+            <mediaType>application/vnd.wso2.sequence</mediaType>
+        </item>
+    </artifact>
+    <artifact name="order_address" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>order_address.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="procEP" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>procEP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="customerAddressEP" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>customerAddressEP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="customer_send" groupId="com.example.bookshop-resources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>customer_send.xml</file>
+            <path>/_system/config/sequences</path>
+            <mediaType>application/vnd.wso2.sequence</mediaType>
+        </item>
+    </artifact>
+</artifacts>

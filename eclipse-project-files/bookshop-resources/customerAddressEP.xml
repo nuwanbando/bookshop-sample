@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="customerAddressEP" xmlns="http://ws.apache.org/ns/synapse">
+  <address format="rest" trace="disable" uri="http://dss.bookshop.com:9763/services/customerService/customers"/>
+  <property name="Content-Type" scope="transport" value="x-www-form-urlencoded"/>
+</endpoint>

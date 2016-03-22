@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="triggerProc" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+  <log level="full">
+    <property name="TRIGGER_PROC" value="********PROC******"/>
+  </log>
+  <payloadFactory media-type="json">
+    <format>{
+   "processDefinitionKey":"BookOrderApprovalProcess",
+"tenantId": "-1234",
+   "variables": [
+      {
+        "name":"orderId",
+        "value":"$2"
+      },
+      {
+        "name":"orderQ",
+        "value":"$1"
+      }
+   ]
+}</format>
+    <args>
+      <arg evaluator="xml" expression="//xformValues/quantity" xmlns:ns="http://org.apache.synapse/xsd"/>
+      <arg evaluator="xml" expression="//xformValues/orderId" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </args>
+  </payloadFactory>
+  <log level="full"/>
+  <header name="Content-Type" scope="transport" value="application/json"/>
+  <call>
+    <endpoint key="conf:endpoints/procEP.xml"/>
+  </call>
+  <drop/>
+</sequence>

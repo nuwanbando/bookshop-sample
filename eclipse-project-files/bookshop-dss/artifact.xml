@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="bookshopOrderService" groupId="com.example.bookshop-dss.dataservice" version="1.0.0" type="service/dataservice" serverRole="DataServicesServer">
+        <file>dataservice/bookshopOrderService.dbs</file>
+    </artifact>
+    <artifact name="customerService" groupId="com.example.bookshop-dss.dataservice" version="1.0.0" type="service/dataservice" serverRole="DataServicesServer">
+        <file>dataservice/customerService.dbs</file>
+    </artifact>
+</artifacts>

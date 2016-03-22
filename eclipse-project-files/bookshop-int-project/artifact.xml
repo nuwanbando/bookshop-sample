@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="InitialRequest" groupId="com.example.bookshop-int-project.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/InitialRequest.xml</file>
+    </artifact>
+    <artifact name="bookbag-api" groupId="com.example.bookshop-int-project.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/bookbag-api.xml</file>
+    </artifact>
+    <artifact name="customer_mq" groupId="com.example.bookshop-int-project.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/customer_mq.xml</file>
+    </artifact>
+    <artifact name="orders_mq" groupId="com.example.bookshop-int-project.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/orders_mq.xml</file>
+    </artifact>
+    <artifact name="order_send_proc" groupId="com.example.bookshop-int-project.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/order_send_proc.xml</file>
+    </artifact>
+    <artifact name="initialRequestProcessor" groupId="com.example.bookshop-int-project.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/initialRequestProcessor.xml</file>
+    </artifact>
+    <artifact name="customerInsertMP" groupId="com.example.bookshop-int-project.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/customerInsertMP.xml</file>
+    </artifact>
+</artifacts>

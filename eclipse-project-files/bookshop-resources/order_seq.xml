@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="order_seq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+  <payloadFactory media-type="xml">
+    <format>
+      <params xmlns="">
+        <orderId>$3</orderId>
+        <bookId>$2</bookId>
+        <quantity>$1</quantity>
+        <reviewed>0</reviewed>
+      </params>
+    </format>
+    <args>
+      <arg evaluator="xml" expression="//xformValues/quantity" xmlns:ns="http://org.apache.synapse/xsd"/>
+      <arg evaluator="xml" expression="//xformValues/bookId" xmlns:ns="http://org.apache.synapse/xsd"/>
+      <arg evaluator="xml" expression="//xformValues/orderId" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </args>
+  </payloadFactory>
+  <store messageStore="orders_mq"/>
+</sequence>

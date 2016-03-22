@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="cloneSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+  <clone continueParent="true" sequential="true">
+    <target sequence="conf:sequences/customer_contact_seq.xml"/>
+    <target sequence="conf:sequences/order_seq.xml"/>
+    <target sequence="conf:sequences/triggerProc.xml"/>
+  </clone>
+  <drop/>
+</sequence>

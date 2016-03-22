@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="customer_contact_seq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+  <payloadFactory media-type="xml">
+    <format>
+      <params xmlns="">
+        <name>$1</name>
+        <email>$2</email>
+      </params>
+    </format>
+    <args>
+      <arg evaluator="xml" expression="//xformValues/customerName" xmlns:ns="http://org.apache.synapse/xsd"/>
+      <arg evaluator="xml" expression="//xformValues/customerEmail" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </args>
+  </payloadFactory>
+  <store messageStore="customer_mq"/>
+  <log level="full"/>
+</sequence>

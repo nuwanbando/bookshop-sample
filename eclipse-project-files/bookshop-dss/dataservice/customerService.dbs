@@ -1,0 +1,81 @@
+<data name="customerService" serviceGroup="org.sample.bookshop" serviceNamespace="">
+    <description/>
+    <config id="bookshop-mysql">
+        <property name="org.wso2.ws.dataservice.user">root</property>
+        <property name="org.wso2.ws.dataservice.password">root</property>
+        <property name="org.wso2.ws.dataservice.protocol">jdbc:mysql://bookshopdb:3306/bookshop</property>
+        <property name="org.wso2.ws.dataservice.driver">com.mysql.jdbc.Driver</property>
+    </config>
+    <query id="select_with_key_customer_query" useConfig="bookshop-mysql">
+        <sql>SELECT id, name, email FROM customer WHERE id=?</sql>
+        <result element="customerCollection" rowName="customer">
+            <element column="id" name="id" xsdType="xs:integer"/>
+            <element column="name" name="name" xsdType="xs:string"/>
+            <element column="email" name="email" xsdType="xs:string"/>
+        </result>
+        <param name="id" ordinal="1" sqlType="INTEGER"/>
+    </query>
+    <query id="update_customer_query" useConfig="bookshop-mysql">
+        <sql>UPDATE customer SET name=?,email=? WHERE id=?</sql>
+        <param name="name" ordinal="1" sqlType="STRING"/>
+        <param name="email" ordinal="2" sqlType="STRING"/>
+        <param name="id" ordinal="3" sqlType="INTEGER"/>
+    </query>
+    <query id="delete_customer_query" useConfig="bookshop-mysql">
+        <sql>DELETE FROM customer WHERE id=?</sql>
+        <param name="id" ordinal="1" sqlType="INTEGER"/>
+    </query>
+    <query id="insert_customer_query" useConfig="bookshop-mysql">
+        <sql>INSERT INTO customer(name,email) VALUES(?,?)</sql>
+        <param name="name" ordinal="1" sqlType="STRING"/>
+        <param name="email" ordinal="2" sqlType="STRING"/>
+    </query>
+    <query id="select_all_customer_query" useConfig="bookshop-mysql">
+        <sql>SELECT id, name, email FROM customer</sql>
+        <result element="customerCollection" rowName="customer">
+            <element column="id" name="id" xsdType="xs:integer"/>
+            <element column="name" name="name" xsdType="xs:string"/>
+            <element column="email" name="email" xsdType="xs:string"/>
+        </result>
+    </query>
+    <operation name="update_customer_operation">
+        <call-query href="update_customer_query">
+            <with-param name="name" query-param="name"/>
+            <with-param name="id" query-param="id"/>
+            <with-param name="email" query-param="email"/>
+        </call-query>
+    </operation>
+    <operation name="delete_customer_operation">
+        <call-query href="delete_customer_query">
+            <with-param name="id" query-param="id"/>
+        </call-query>
+    </operation>
+    <operation name="insert_customer_operation">
+        <call-query href="insert_customer_query">
+            <with-param name="name" query-param="name"/>
+            <with-param name="email" query-param="email"/>
+        </call-query>
+    </operation>
+    <operation name="select_with_key_customer_operation">
+        <call-query href="select_with_key_customer_query">
+            <with-param name="id" query-param="id"/>
+        </call-query>
+    </operation>
+    <operation name="select_all_customer_operation">
+        <call-query href="select_all_customer_query"/>
+    </operation>
+    <resource method="GET" path="/customers">
+        <call-query href="select_all_customer_query"/>
+    </resource>
+    <resource method="POST" path="/customers">
+        <call-query href="insert_customer_query">
+            <with-param name="name" query-param="name"/>
+            <with-param name="email" query-param="email"/>
+        </call-query>
+    </resource>
+    <resource method="GET" path="/customer/{id}">
+        <call-query href="select_with_key_customer_query">
+            <with-param name="id" query-param="id"/>
+        </call-query>
+    </resource>
+</data>
